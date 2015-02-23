@@ -17,3 +17,18 @@ h1 {
   text-transform: uppercase;
   letter-spacing: -1px;
 }
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
+h3 {
+  font-family: Lato, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+[ng-click] {
+  cursor: pointer;
+}

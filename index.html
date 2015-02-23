@@ -14,24 +14,27 @@
     <div class="jumbotron">
       <div  class="container">
         <h1>The Bestaurants</h1>
+        <h2>But only in Portland&hellip; specifically the one in Oregon.</h2>
       </div>
     </div>
     <div class="container" ng-controller="RestaurantsCtrl">
       <div class="col-md-6">
-        <h2>New Bestaurant</h2>
-          <form ng-submit="addRestaurant()" class="form-inline" role="form">
+        <h3>Enter a New Bestaurant</h3>
+          <form ng-submit="addRestaurant()" role="form">
             <div class="form-group">
-              <input type="text" ng-model="restaurantName" class="form-control" placeholder="Enter A Bestaurant!" required>
+              <input type="text" ng-model="restaurantName" class="form-control" placeholder="What's it called?" required>
+              <input type="text" ng-model="restaurantCuisine" class="form-control" placeholder="What kind of food do they gots there?" required>
+              <input type="text" ng-model="restaurantLocation" class="form-control" placeholder="Where is this place?" required>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
       </div>
 
       <div class="col-md-6">
-        <h2 ng-show="restaurants.length">The Bestaurants</h2>
+        <h3 ng-show="restaurants.length">The Bestaurants</h3>
         <ul ng-show="restaurants.length">
           <li ng-repeat="item in restaurants">
-            {{ item.name }}
+            Name: {{ item.name }}, Cuisine: {{ item.cuisine }}, Neighborhood: {{item.location}} <a ng-click="deleteRestaurant(item)">Delete</a>
           </li>
         </ul>
       </div>
