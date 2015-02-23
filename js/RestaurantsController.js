@@ -5,7 +5,7 @@ bestRestaurants.controller('RestaurantsCtrl', function RestaurantsCtrl($scope) {
     $scope.restaurantName = null;
     $scope.restaurantCuisine = null;
     $scope.restaurantLocation = null;
-    $scope.restaurantPriceRange = "$";
+    $scope.restaurantPriceRange = "";
   };
   $scope.deleteRestaurant = function(restaurant) {
     var index = $scope.restaurants.indexOf(restaurant);
