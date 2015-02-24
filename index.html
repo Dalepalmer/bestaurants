@@ -17,14 +17,21 @@
         <h2>&hellip; but only in Portland&hellip; specifically the one in Oregon.</h2>
       </div>
     </div>
+    <div class="jumbotron" id="main">
     <div class="container" ng-controller="RestaurantsCtrl">
       <div class="col-md-6">
         <h3>Enter a New Bestaurant</h3>
           <form ng-submit="addRestaurant()" role="form">
             <div class="form-group">
               <input type="text" ng-model="restaurantName" class="form-control" placeholder="What's it called?" required>
+            </div>
+            <div class="form-group">
               <input type="text" ng-model="restaurantCuisine" class="form-control" placeholder="What kind of food do they gots there?" required>
+            </div>
+            <div class="form-group">
               <input type="text" ng-model="restaurantLocation" class="form-control" placeholder="Where is this place?" required>
+            </div>
+            <div class="form-group">
               <select ng-model="restaurantPriceRange" class="form-control">
                 <option value="">What's the price range?</option>
                 <option value="$">$</option>
@@ -39,21 +46,53 @@
       </div>
       <div class="col-md-6">
         <h3 ng-show="restaurants.length">The Bestaurants</h3>
-        <ul ng-show="restaurants.length">
-          <li ng-repeat="item in restaurants">
-            <span ng-click="editing = true" ng-hide="editing">
-            Name: {{ item.name }}, Cuisine: {{ item.cuisine }}, Neighborhood: {{item.location}}, Price Range: {{item.priceRange}} <a ng-click="deleteRestaurant(item)">Delete</a>
-            </span>
-            <span class="form-group" ng-show="editing" ng-submit="editing = false">
-              <form class="form-inline" role="form">
-                <input type="text" class="form-control input-sm" ng-model="item.name" required/>
-                <input type="text" class="form-control input-sm" ng-model="item.cuisine" required/>
-                <input type="text" class="form-control input-sm" ng-model="item.location" required/>
-                <button class="btn btn-default btn-sm" type="submit">Save</button>
+            <dl ng-show="restaurants.length">
+              <form class="form-inline" role="form" ng-repeat="item in restaurants" ng-submit="editing = false">
+                <dt>
+                  <span ng-click="editing = true" ng-hide="editing">
+                    {{item.name}}
+                  </span>
+                  <span class="form-group" ng-show="editing">
+                    <input type="text" class="form-control input-sm" ng-model="item.name" required/>
+                  </span>
+                </dt>
+                <dd>
+                  <span ng-click="editing = true" ng-hide="editing">
+                    {{ item.cuisine }}
+                  </span>
+                  <span class="form-group" ng-show="editing">
+                    <input type="text" class="form-control input-sm" ng-model="item.cuisine" required/>
+                  </span>
+                </dd>
+                <dd>
+                  <span ng-click="editing = true" ng-hide="editing">
+                    {{ item.location }}
+                  </span>
+                  <span class="form-group" ng-show="editing">
+                    <input type="text" class="form-control input-sm" ng-model="item.location" required/>
+                  </span>
+                </dd>
+                <dd>
+                  <span ng-click="editing = true" ng-hide="editing">
+                    {{ item.priceRange }}
+                  </span>
+                  <span class="form-group" ng-show="editing">
+                    <select ng-model="item.priceRange" class="form-control" required/>
+                      <option value="">What's the price range?</option>
+                      <option value="$">$</option>
+                      <option value="$$">$$</option>
+                      <option value="$$$">$$$</option>
+                      <option value="$$$$">$$$$</option>
+                      <option value="$$$$$">$$$$$</option>
+                    </select>
+                  </span>
+                </dd>
+                <span class="form-group" ng-show="editing">
+                  <button class="btn btn-default btn-sm" type="submit">Save</button>
+                </span>
               </form>
-            </span>
-          </li>
-        </ul>
+          </dl>
+        </div>
       </div>
     </div>
   </body>
