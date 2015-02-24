@@ -44,10 +44,10 @@
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <h3 ng-show="restaurants.length">The Bestaurants</h3>
             <dl ng-show="restaurants.length">
-              <form class="form-inline" role="form" ng-repeat="item in restaurants" ng-submit="editing = false">
+              <form class="form-inline" role="form" ng-repeat="item in restaurants | filter:query" ng-submit="editing = false">
                 <dt>
                   <span ng-click="editing = true" ng-hide="editing">
                     {{item.name}}
@@ -92,6 +92,14 @@
                 </span>
               </form>
           </dl>
+        </div>
+        <div class="col-md-2">
+          <h3 ng-show="restaurants.length">Search</h3>
+          <form class="form-inline" role="form" ng-show="restaurants.length">
+            <div class="form-group">
+              <input ng-model="query" type="text" class="form-control" placeholder="Search">
+            </div>
+          </form>
         </div>
       </div>
     </div>
